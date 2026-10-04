@@ -1,36 +1,73 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# cihuy-sertifikat
 
-## Getting Started
+A web-based certificate editor built with Next.js, React, TypeScript, and Tailwind CSS (Cascading Style Sheets).
 
-First, run the development server:
+## Project structure
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```text
+certifikat-editor/           # Local folder for cihuy-sertifikat
+├── .github/                # Placeholder for future GitHub Actions workflows
+├── backend/                # Future backend implementation
+├── frontend/               # Complete Next.js application
+│   ├── app/                # Routes, layout, and global styles
+│   ├── components/         # Reusable components
+│   ├── screens/            # Home and editor screens
+│   ├── public/             # Static assets
+│   ├── package.json        # Frontend dependencies and commands
+│   ├── package-lock.json   # Locked dependency versions
+│   └── ...                 # Next.js, TypeScript, and lint configuration
+├── .gitignore
+├── README.md
+├── HOW_TO_DEPLOY.md
+└── HOW_TO_USE.md
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Frontend and backend live in one repository with separate folders. Currently, only the frontend is implemented and runnable. The backend folder is a placeholder; its framework and runtime have not been selected.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+This structure keeps code responsibilities separate. A single application deployment remains possible when the backend is implemented; folder layout alone does not determine deployment architecture.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The `.github/` directory contains only a `.gitkeep` placeholder because Git does not track empty directories. Future workflow files belong in `.github/workflows/`. No workflows or runner configuration have been created.
 
-## Learn More
+## Current features
 
-To learn more about Next.js, take a look at the following resources:
+- Home screen with a file-name input and navigation to the editor.
+- Certificate preview with recipient selection, editable date, text color, and text size.
+- Recipient list with an add-name control.
+- Mock sign-in and sample recent files.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**Prototype limitations:** authentication is simulated, import/export controls are placeholders, and changes are not persisted after a page reload. There is no database or backend service yet.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Quick start
 
-## Deploy on Vercel
+Requirements: Node.js 20.9 or newer (prefer a supported long-term support release) and npm.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+From the repository root:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm --prefix frontend ci
+npm --prefix frontend run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000).
+
+## Documentation
+
+- [How to use](HOW_TO_USE.md): run the project locally and try the editor.
+- [How to deploy](HOW_TO_DEPLOY.md): build and serve the current frontend.
+- [Backend notes](backend/README.md): scope of the future backend.
+
+## Git and environment files
+
+The root `.gitignore` covers nested frontend/backend dependencies, generated output, logs, coverage, and local environment files.
+
+- Commit `frontend/package-lock.json` for reproducible installs.
+- Place frontend local configuration in `frontend/.env.local` when needed.
+- Secret-free `.env.example` and `.env.sample` templates remain trackable.
+- Never put secrets in `NEXT_PUBLIC_` variables; these can be exposed to the browser.
+- Ignore rules do not remove files that are already tracked by Git.
+
+No environment variables or GitHub remote are needed to run the current prototype.
+
+## License
+
+The license was added separately on GitHub and is not present in this local checkout yet. Once the repository is connected and synchronized, keep that license file at the repository root. This README does not specify or replace its terms.
