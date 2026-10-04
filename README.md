@@ -1,5 +1,7 @@
 # cihuy-sertifikat
 
+[How to use](HOW_TO_USE.md) · [How to deploy](HOW_TO_DEPLOY.md)
+
 A web-based certificate editor built with Next.js, React, TypeScript, and Tailwind CSS (Cascading Style Sheets).
 
 ## Project structure
